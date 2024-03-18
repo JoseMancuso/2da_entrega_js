@@ -32,6 +32,7 @@ let sumaTotal = 0;
 costoCaballos = [];
 
 // Funciones //
+    // Prompts para selección de opciones del usuario //
 function elegirRaza(mensaje) {
     let input;
     do {
@@ -74,6 +75,7 @@ function elegirEdad(mensaje) {
     return input
 }
 
+    // Cálculo de precio según los valores y multiplicadores de las opciones elegidas //
 function calcularPrecio(razaId, tierId, edadId) {
     const raza = preciosCaballos.razas[razaId];
     const tier = preciosCaballos.tiers[tierId];
@@ -86,6 +88,7 @@ function calcularPrecio(razaId, tierId, edadId) {
 // Ejecución //
 alert("Bienvenido! Seleccione los 4 caballos que desea comprar para su carreta.")
 
+    // Ciclo para seleccionar opciones, calcular valor de lo seleccionado, y pushear ese dato al array correspondiente //
 for (cantidadCaballos = 0; cantidadCaballos < 4; cantidadCaballos++) {
 const razaId = elegirRaza("Seleccione la raza de su caballo. Ingrese el número de la opción deseada: \n1. Mustang \n2. Anglonórdico \n3. Trotador Pavalónico \n4. Bretón Imperial \n5. Trotador Caeterrano \n6. Crinlarga Elfico \n7. Pasofino Naerita \n8. Dunés Asláhbico \n9. Sulemitano Real ");
 const tierId = elegirTier("Seleccione el tier de su caballo. Ingrese el número de la opción deseada: : \n1. Mestizo \n2. Estandar \n3. Noble \n4. Campeón \n5. Purasangre");
@@ -95,9 +98,11 @@ costoCaballos.push(precio);
 console.log("El costo del caballo Nº" + (cantidadCaballos + 1) + " es de " + costoCaballos[cantidadCaballos] + " monedas de plata")
 };
 
+    // Ordenar de mas económico a más costos, y mostrar estos dos casos en consola //
 costoCaballos.sort ((a, b) => a - b);
 console.log("El caballo más económico costó " + costoCaballos[0] + ", mientras que el más caro costó " + costoCaballos[3]);
 
+    // Sumar el costo de las 4 selecciones y mostrar el total en consola //
 for (i = 0; i < costoCaballos.length; i++) {
     sumaTotal += parseFloat(costoCaballos[i]);
 } 
